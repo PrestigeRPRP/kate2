@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <title>Kate</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="./index.css">
+        <link rel="icon" href="./resource/shivi.jpeg">
+
+      
+</head>
+<body>
+    <div class="container">
+        <div class="wrap">
+            <a href="#" class="start" tabindex="0">
+                <img class="start" src="./resource/koala1.png" alt="🐨">
+            </a>
+        
+            <div class="secret_message" 
+         data-text="<p>To Kate</p>
+                             <p>I just wanted to say a huge thank you for always being there for me.</p>
+                             <p>Your support means the world, especially during my journey to becoming a police officer </p>
+                             <p>with my recent promotion. I'm so lucky to have a friend like you.</p>
+                             <p>Know that I'm always here for you, no matter what. </p> 
+
+                             <div align='right'><strong>-- Kite</strong></div>">
+                Message for my Captain.
+               
+            </div>
+            
+           
+
+           
+        </div>
+    </div>
+    
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+
+    </script>
+
+    <script>var running = false;
+        var autoPlayTimeout;
+        
+        function typeWriter(text, n) {
+            if (n < (text.length)) {
+                $('.secret_message').html(text.substring(0, n + 1) + "<img class='heart' src='./resource/heart3.svg' alt='❤'>");
+                n++;
+                setTimeout(function () {
+                    typeWriter(text, n);
+                }, 100);
+            } else {
+                running = false;
+            }
+        }
+        
+        $('.start').click(function (e) {
+            e.stopPropagation();
+            clearTimeout(autoPlayTimeout); // Clear the auto-play timeout if clicked
+            if (running == false) {
+                var text = $('.secret_message').data('text');
+                running = true;
+                typeWriter(text, 0);
+            }
+        });
+        
+        // Set the auto-play timeout to start the typeWriter function after 5 seconds
+        autoPlayTimeout = setTimeout(function () {
+            if (!running) { // Check if it's already running
+                var text = $('.secret_message').data('text');
+                running = true;
+                typeWriter(text, 0);
+            }
+        }, 5000); // 5000 milliseconds = 5 seconds
+
+    // Create an audio object
+const audio = new Audio('Musik.mp3'); // Ensure the path to your audio file is correct
+// Set the volume to 0.2 (20%)
+audio.volume = 0.2;
+// Function to play audio
+function playAudio() {
+    audio.play().catch(error => {
+        console.error("Audio playback failed:", error);
+        // If autoplay fails, show a message or provide a button for user interaction
+        alert("Click anywhere to play audio.");
+    });
+}
+
+// Event listener for user interaction to allow audio playback
+document.addEventListener('click', () => {
+    if (audio.paused) {
+        playAudio();
+    }
+});
+
+// Call the playAudio function on page load
+document.addEventListener('DOMContentLoaded', () => {
+    playAudio();
+});
+
+    </script>
+     
+     
+
+<script src="./index.js"></script>
+</body>
+</html>
+
